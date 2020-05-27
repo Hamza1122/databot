@@ -32,7 +32,7 @@ def result(name):
     test = ["Hello",user_response]
     tfidf_test = tfidf_vect.transform(test)
     y_pred = classifier.predict(tfidf_test[1])
-    return df['Answer'][y_pred[0]]
+    return "Your name is "+ name
 
 
 
