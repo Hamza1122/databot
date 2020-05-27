@@ -5,6 +5,10 @@ import string
 import pandas as pd
 from sklearn.neighbors import KNeighborsClassifier
 classifier = KNeighborsClassifier(n_neighbors=1, algorithm = 'brute')
+filename = 'knn_bot.pkl'
+classifier = pickle.load(open(filename, 'rb'))
+filename1 = 'tfidf.pkl'
+tfidf_vect = pickle.load(open(filename1,'rb'))
 
 
 app = Flask(__name__)
@@ -21,15 +25,11 @@ def tokenize(text):
         updated.append(lemma(item))
     return updated
 
-@app.route('/predict',method=['POST'])
-def result():
-    filename = 'knn_bot.pkl'
-    classifier = pickle.load(open(filename, 'rb'))
-    filename1 = 'tfidf.pkl'
-    tfidf_vect = pickle.load(open(filename1,'rb'))
+@app.route('/predict/<name>')
+def result(name):
     df = pd.read_csv('Updated_Dataset.csv')
     df = df.drop(['Unnamed: 0'], axis=1)
-    user_response = "What is a leveraged buyout?"
+    user_response = name#"What is a leveraged buyout?"
 
     test = ["Hello",user_response]
     tfidf_test = tfidf_vect.transform(test)
