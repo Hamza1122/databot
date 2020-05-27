@@ -13,7 +13,9 @@ app = Flask(__name__)
 def tokenize(text):
     text = text.lower()
     #tokens = nltk.word_tokenize(text)
-    tokens=text.split(" ")
+    words=text.split()
+    table = str.maketrans('', '', string.punctuation)
+    tokens = [w.translate(table) for w in words]
     updated = []
     for item in tokens:
         updated.append(lemma(item))
@@ -32,7 +34,7 @@ def result(name):
     test = ["Hello",user_response]
     tfidf_test = tfidf_vect.transform(test)
     y_pred = classifier.predict(tfidf_test[1])
-    return "Your name is "+ name
+    return df['Answer'][y_pred[0]]
 
 
 
