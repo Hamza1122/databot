@@ -10,25 +10,25 @@ classifier = KNeighborsClassifier(n_neighbors=1, algorithm = 'brute')
 app = Flask(__name__)
 
 #PreProcessing
-def tokenize(text):
-    text = text.lower()
-    #tokens = nltk.word_tokenize(text)
-    words=text.split()
-    table = str.maketrans('', '', string.punctuation)
-    tokens = [w.translate(table) for w in words]
-    updated = []
-    for item in tokens:
-        updated.append(lemma(item))
-    return updated
 
-
-filename = 'knn_bot.pkl'
-classifier = pickle.load(open(filename, 'rb'))
-filename1 = 'tfidf.pkl'
-tfidf_vect = pickle.load(open(filename1,'rb'))
 
 @app.route('/predict/<name>')
 def result(name):
+    def tokenize(text):
+        text = text.lower()
+        #tokens = nltk.word_tokenize(text)
+        words=text.split()
+        table = str.maketrans('', '', string.punctuation)
+        tokens = [w.translate(table) for w in words]
+        updated = []
+        for item in tokens:
+            updated.append(lemma(item))
+        return updated
+        
+    filename = 'knn_bot.pkl'
+    classifier = pickle.load(open(filename, 'rb'))
+    filename1 = 'tfidf.pkl'
+    tfidf_vect = pickle.load(open(filename1,'rb'))
     df = pd.read_csv('Updated_Dataset.csv')
     df = df.drop(['Unnamed: 0'], axis=1)
     user_response = name#"What is a leveraged buyout?"
