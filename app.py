@@ -19,8 +19,17 @@ def tokenize(text):
         updated.append(lemma(item))
     return updated
 
+
+filename = 'knn_bot.pkl'
+classifier = pickle.load(open(filename, 'rb'))
+filename1 = 'tfidf.pkl'
+tfidf_vect = pickle.load(open(filename1,'rb'))
+df = pd.read_csv('Updated_Dataset.csv')
+df = df.drop(['Unnamed: 0'], axis=1)
+
 @app.route('/predict/<name>')
 def result(name):
+    test = ["Hello",name]
     return "Your name is"+name
 
 
