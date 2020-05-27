@@ -8,16 +8,12 @@ classifier = KNeighborsClassifier(n_neighbors=1, algorithm = 'brute')
 
 
 app = Flask(__name__)
-model = pickle.load(open('model.pkl', 'rb'))
 
 #PreProcessing
 def tokenize(text):
     text = text.lower()
     #tokens = nltk.word_tokenize(text)
-    words=text.split()
-    table = str.maketrans('', '', string.punctuation)
-    tokens = [w.translate(table) for w in words]
-    print(tokens)
+    tokens=text.split(" ")
     updated = []
     for item in tokens:
         updated.append(lemma(item))
@@ -25,9 +21,6 @@ def tokenize(text):
 
 @app.route('/predict/<name>')
 def result(name):
-
-
-
     filename = 'knn_bot.pkl'
     classifier = pickle.load(open(filename, 'rb'))
     filename1 = 'tfidf.pkl'
@@ -39,7 +32,7 @@ def result(name):
     test = ["Hello",user_response]
     tfidf_test = tfidf_vect.transform(test)
     y_pred = classifier.predict(tfidf_test[1])
-    return name
+    return df['Answer'][y_pred[0]]
 
 
 
@@ -49,49 +42,11 @@ def result(name):
 def home():
     return "Hello World"
 
+
+
 @app.route('/home')
 def home_page():
     return "home Information"
-
-
-@app.route('/course_registraion')
-def course_registration():
-    return "Registraion Information"
-
-
-
-@app.route('/Attendance')
-def attendance():
-    return "Attendance Information"
-
-
-@app.route('/marks')
-def marks():
-    return "marks Information"
-
-
-@app.route('/transcript')
-def transcript():
-    return "Transcript Information"
-
-@app.route('/fee_challan')
-def fee_challan():
-    return "Challan Information"
-
-
-@app.route('/fee_details')
-def fee_details():
-    return "Transcript Information"
-
-
-@app.route('/course_feedback')
-def course_feedback():
-    return "Course feedback Information"
-
-
-@app.route('/tentative_')
-def tentative_studyplan():
-    return "Tentatie Study Plan"
 
 
 
