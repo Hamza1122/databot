@@ -39,7 +39,7 @@ def result(name):
     test = ["Hello",user_response]
     tfidf_test = tfidf_vect.transform(test)
     y_pred = classifier.predict(tfidf_test[1])
-    return df['Answer'][y_pred[0]]
+    return name
 
 
 
@@ -48,21 +48,6 @@ def result(name):
 @app.route('/')
 def home():
     return "Hello World"
-
-@app.route('/predict',methods=['POST'])
-def predict():
-    '''
-    For rendering results on HTML GUI
-    '''
-    int_features = [int(x) for x in request.form.values()]
-    final_features = [np.array(int_features)]
-    prediction = model.predict(final_features)
-
-    output = round(prediction[0], 2)
-
-    return render_template('index.html', prediction_text='Employee Salary should be $ {}'.format(output))
-
-
 
 @app.route('/home')
 def home_page():
