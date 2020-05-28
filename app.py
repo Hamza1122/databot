@@ -1,3 +1,33 @@
+import pandas as pd
+import numpy as np
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+
+#PreProcessing
+def tokenize(text):
+    text = text.lower()
+    tokens = text.split(" ")
+    updated = []
+    for item in tokens:
+        updated.append(item)
+    return updated
+
+
+
+#Testing
+def response(question):
+    test = ["Hello",question]
+    tfidf_test = tfidf_vect.transform(test)
+    h = 0;
+    h_i = 0;
+    for i in range(len(tfidf_train.A)):
+        cos_lib = cosine_similarity(tfidf_test[1], tfidf_train[i])
+        if cos_lib > h :
+            h = cos_lib
+            h_i = i
+    return df['Answer'][h_i]
+
+
 
 from flask import Flask
 app = Flask(__name__)
