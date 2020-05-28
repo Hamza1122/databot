@@ -27,12 +27,27 @@ def response(question):
             h_i = i
     return df['Answer'][h_i]
 
+def greeting(text):
+    for i in range(len(greetings)):
+        if greetings[i].lower() == text.lower():
+            return Responses[i]
+    return 0
 
 
 from flask import Flask
 app = Flask(__name__)
 @app.route("/")
 def tabs_information():
+    return "chrome driver not working on cloud we'll fix it."
+
+@app.route("/data1")
+def data1():
+    df = pd.read_csv('Updated_Dataset.csv')
+    df = df.drop(['Unnamed: 0'], axis=1)
+    tfidf_vect = TfidfVectorizer(tokenizer = tokenize , stop_words = 'english')
+    tfidf_train = tfidf_vect.fit_transform(df['Question'].values.astype(str))
+    greetings = ["how are you?","hi","hello", "How is it going?","How are you doing?","Nice to meet You","how do you do?","What's up?"]
+    Responses = ["I am Good","Hello","hi", "Good","Very well, thanks.","Thankyou","I am doing well","The sky's up but I'm fine thanks. What about you?"]
     return "chrome driver not working on cloud we'll fix it."
 
 
