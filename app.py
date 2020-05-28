@@ -52,15 +52,15 @@ def data1():
     user_response ="User: Is a bussiness plan important?"
     user_response=user_response.lower()
     if(user_response!='bye'):
-      if(user_response=='thanks' or user_response=='thank you' ):
+        if(user_response=='thanks' or user_response=='thank you' ):
         #print("ROBO: You are welcome..")
-      else:
-        #resp = greeting(user_response)
-        if(resp!=0):
-          #print("ROBO: "+greeting(user_response))
         else:
-          #print("ROBO: ",end="")
-          #print(response(user_response))
+            #resp = greeting(user_response)
+            if(resp!=0):
+          #print("ROBO: "+greeting(user_response))
+            else:
+            #print("ROBO: ",end="")
+            #print(response(user_response))
     else:
 
       #print("ROBO: Bye! take care..")
