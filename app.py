@@ -19,24 +19,24 @@ def tokenize(text):
         updated.append(item)
     return updated
 
-@app.route('/predict/<name>')
-def result(name):
+def response(question):
+    test = ["Hello",question]
+    tfidf_test = tfidf_vect.transform(test)
+    y_pred = classifier.predict(tfidf_test[1])
+    return df['Answer'][y_pred[0]]
 
-    filename = 'knn_bot.pkl'
-    classifier = pickle.load(open(filename,'rb'))
-    filename1 = 'tfidf.pkl'
-    tfidf_vect = pickle.load(open(filename1,'rb'))
-    df = pd.read_csv('Updated_Dataset.csv')
-    df = df.drop(['Unnamed: 0'], axis=1)
+filename = 'knn_bot.pkl'
+classifier = pickle.load(open(filename,'rb'))
+filename1 = 'tfidf.pkl'
+tfidf_vect = pickle.load(open(filename1,'rb'))
+df = pd.read_csv('Updated_Dataset.csv')
+df = df.drop(['Unnamed: 0'], axis=1)
+
+@app.route('/predict')
+def result():
     user_response = "What is a leveraged buyout?"
-
-    #test = ["Hello",user_response]
-    #tfidf_test = tfidf_vect.transform(test)
-    #y_pred = classifier.predict(tfidf_test[1])
-    #return df['Answer'][y_pred[0]]
-
-    return "your name is" +name
-
+    bot_response = response(user_response)
+    return "Hello Worl2"
 
 
 @app.route('/')
