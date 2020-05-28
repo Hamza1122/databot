@@ -20,31 +20,24 @@ def tokenize(text):
         updated.append(item)
     return updated
 
-def response(question):
-    test = ["Hello",question]
-    tfidf_vect = TfidfVectorizer(tokenizer = tokenize , stop_words = 'english')
-    
-   # cv=CountVectorizer()
-   # word_count_vector=cv.fit_transform(test)
-   #tfidf_transformer=TfidfTransformer(smooth_idf=True,use_idf=True)
-   # tfidf_vect=tfidf_transformer.fit(word_count_vector)
-    tfidf_test = tfidf_vect.fit_transform(test.values.astype(str))
-    y_pred = classifier.predict(tfidf_test[1])
-    return df['Answer'][y_pred[0]]
 
 
 @app.route('/predict')
 def result():
     
     filename = 'knn_bot.pkl'
-    classifier = pickle.load(open(filename,'rb'))
+    model_pickle = pickle.load(open(filename,'rb'))
     filename1 = 'tfidf.pkl'
    # tfidf_vect = pickle.load(open(filename1,'rb'))
     df = pd.read_csv('Updated_Dataset.csv')
     df = df.drop(['Unnamed: 0'], axis=1)
     user_response = "What is a leveraged buyout?"
-    bot_response = response(user_response)
-    return "Hello Worl2"
+    test = ["Hello",user_response]
+    tfidf_vect = TfidfVectorizer(tokenizer = tokenize , stop_words = 'english')
+    tfidf_test = tfidf_vect.fit_transform(test.values.astype(str))
+    y_pred = model_pickle.predict(tfidf_test[1])
+    #return df['Answer'][y_pred[0]]
+     return "Hello Worl2"
 
 
 @app.route('/')
