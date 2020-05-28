@@ -34,7 +34,7 @@ def result():
     user_response = "What is a leveraged buyout?"
     test = ["Hello",user_response]
     tfidf_vect = TfidfVectorizer(tokenizer = tokenize , stop_words = 'english')
-    tfidf_test = tfidf_vect.fit_transform(test.values.astype(str))
+    tfidf_test = tfidf_vect.fit_transform(test)
     y_pred = model_pickle.predict(tfidf_test[1])
     #return df['Answer'][y_pred[0]]
     return "Hello Worl2"
