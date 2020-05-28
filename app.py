@@ -2,8 +2,6 @@ import numpy as np
 from flask import Flask, request, jsonify, render_template
 import pickle
 import pandas as pd
-import nltk
-import string
 from sklearn.neighbors import KNeighborsClassifier
 classifier = KNeighborsClassifier(n_neighbors=1, algorithm = 'brute')
 
@@ -12,13 +10,13 @@ app = Flask(__name__)
 #PreProcessing
 def tokenize(text):
     text = text.lower()
-    words=text.split()
-    table = str.maketrans('', '', string.punctuation)
-    tokens = [w.translate(table) for w in words]
+    #tokens = nltk.word_tokenize(text)
+    tokens=text.split(" ")
     updated = []
     for item in tokens:
         updated.append(item)
     return updated
+
 
 
 @app.route('/predict/<name>')
