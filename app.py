@@ -128,24 +128,24 @@ def syallabus():
 
 @app.route('/assignment')
 def assignment():
-    return '''<p>
-    What is the Assignments tool?<br>
-    How do I add an assignment?<br>
-    How do I edit an existing assignment?<br>
-    How do I enable student peer review for an assignment?<br>
-    How do I enable group submissions for an assignment?<br>
-    How do I delete an assignment?<br>
-    How do students submit an assignment?<br>
-    How do I submit an assignment on behalf of a student?<br>
-    How do I grade an assignment?<br>
-    How do students complete a peer assessment assignment?<br>
-    How do I grade a peer review assignment<br>
-    How do I download assignments for grading offline?<br>
-    How do I upload graded assignment submissions and feedback?<br>
-    How do I release assignment grades?<br>
-    How do students view their assignment feedback?<br>
-    How do I change the Assignments tool permissions?<br>
-    </p>'''
+    return '''
+    What is the Assignments tool?
+    How do I add an assignment?
+    How do I edit an existing assignment?
+    How do I enable student peer review for an assignment?
+    How do I enable group submissions for an assignment?
+    How do I delete an assignment?
+    How do students submit an assignment?
+    How do I submit an assignment on behalf of a student?
+    How do I grade an assignment?
+    How do students complete a peer assessment assignment?
+    How do I grade a peer review assignment
+    How do I download assignments for grading offline?
+    How do I upload graded assignment submissions and feedback?
+    How do I release assignment grades?
+    How do students view their assignment feedback?
+    How do I change the Assignments tool permissions?
+    '''
 
 @app.route('/announcement')
 def announcement():
