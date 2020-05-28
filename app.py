@@ -3,7 +3,6 @@ from flask import Flask, request, jsonify, render_template
 import pickle
 import pandas as pd
 import nltk
-from pattern.en import lemma, lexeme
 from sklearn.neighbors import KNeighborsClassifier
 classifier = KNeighborsClassifier(n_neighbors=1, algorithm = 'brute')
 
@@ -15,7 +14,7 @@ def tokenize(text):
     tokens = nltk.word_tokenize(text)
     updated = []
     for item in tokens:
-        updated.append(lemma(item))
+        updated.append(item)
     return updated
 
 
