@@ -48,8 +48,20 @@ def data1():
     tfidf_train = tfidf_vect.fit_transform(df['Question'].values.astype(str))
     greetings = ["how are you?","hi","hello", "How is it going?","How are you doing?","Nice to meet You","how do you do?","What's up?"]
     Responses = ["I am Good","Hello","hi", "Good","Very well, thanks.","Thankyou","I am doing well","The sky's up but I'm fine thanks. What about you?"]
-    user_response ="Is a bussiness plan important?"
+    user_response ="User: Is a bussiness plan important?"
     user_response=user_response.lower()
+    if(user_response!='bye'):
+        if(user_response=='thanks' or user_response=='thank you' ):
+            print("ROBO: You are welcome..")
+        else:
+            resp = greeting(user_response)
+            if(resp!=0):
+                print("ROBO: "+greeting(user_response))
+            else:
+                print("ROBO: ",end="")
+                print(response(user_response))
+     else:
+         print("ROBO: Bye! take care..")
     return "chrome driver not working on cloud we'll fix it."
 
 
