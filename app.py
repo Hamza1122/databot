@@ -2,6 +2,7 @@ import numpy as np
 from flask import Flask, request, jsonify, render_template
 import pickle
 import string
+import nltk
 import pandas as pd
 from sklearn.neighbors import KNeighborsClassifier
 classifier = KNeighborsClassifier(n_neighbors=1, algorithm = 'brute')
