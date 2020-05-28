@@ -1,40 +1,29 @@
-from flask import Flask
+import numpy as np
+from flask import Flask, request, jsonify, render_template
 import pickle
+import pandas as pd
 import nltk
 from pattern.en import lemma, lexeme
-import pandas as pd
-import string
 from sklearn.neighbors import KNeighborsClassifier
 classifier = KNeighborsClassifier(n_neighbors=1, algorithm = 'brute')
 
-app = Flask(__name__)
 
+app = Flask(__name__)
 #PreProcessing
 def tokenize(text):
     text = text.lower()
-    #tokens = nltk.word_tokenize(text)
-    words=text.split()
-    table = str.maketrans('', '', string.punctuation)
-    tokens = [w.translate(table) for w in words]
-    print(tokens)
+    tokens = nltk.word_tokenize(text)
     updated = []
     for item in tokens:
         updated.append(lemma(item))
     return updated
 
 
-@app.route("/")
-def hello():
-    return "Welcome to machine learning model APIs!"
-
-
 @app.route('/predict/<name>')
 def result(name):
-    
-    
 
     filename = 'knn_bot.pkl'
-    classifier = pickle.load(open(filename, 'rb'))
+    classifier = pickle.load(open(filename,'rb'))
     filename1 = 'tfidf.pkl'
     tfidf_vect = pickle.load(open(filename1,'rb'))
     df = pd.read_csv('Updated_Dataset.csv')
@@ -45,7 +34,24 @@ def result(name):
     tfidf_test = tfidf_vect.transform(test)
     y_pred = classifier.predict(tfidf_test[1])
     return df['Answer'][y_pred[0]]
-   # return ' name is ' + name
-    
-if __name__ == '__main__':
-    app.run()
+
+    #return "your name is" +name
+
+
+
+@app.route('/')
+def home():
+    return "Hello World"
+
+
+
+@app.route('/home')
+def home_page():
+    return "home Information"
+
+
+
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
