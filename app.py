@@ -51,16 +51,6 @@ def data1():
     Responses = ["I am Good","Hello","hi", "Good","Very well, thanks.","Thankyou","I am doing well","The sky's up but I'm fine thanks. What about you?"]
     user_response ="User: Is a bussiness plan important?"
     user_response=user_response.lower()
-    @app.route("/data1")
-def data1():
-    df = pd.read_csv('Updated_Dataset.csv')
-    df = df.drop(['Unnamed: 0'], axis=1)
-    tfidf_vect = TfidfVectorizer(tokenizer = tokenize , stop_words = 'english')
-    tfidf_train = tfidf_vect.fit_transform(df['Question'].values.astype(str))
-    greetings = ["how are you?","hi","hello", "How is it going?","How are you doing?","Nice to meet You","how do you do?","What's up?"]
-    Responses = ["I am Good","Hello","hi", "Good","Very well, thanks.","Thankyou","I am doing well","The sky's up but I'm fine thanks. What about you?"]
-    user_response ="User: Is a bussiness plan important?"
-    user_response=user_response.lower()
     if(user_response!='bye'):
         if(user_response=='thanks' or user_response=='thank you' ):
             #print("ROBO: You are welcome..")
