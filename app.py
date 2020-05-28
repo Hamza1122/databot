@@ -2,10 +2,10 @@ import numpy as np
 from flask import Flask, request, jsonify, render_template
 import pickle
 import pandas as pd
+import nltk
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.feature_extraction.text import TfidfTransformer
-from sklearn.feature_extraction.text import CountVectorizer
- 
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 classifier = KNeighborsClassifier(n_neighbors=1, algorithm = 'brute')
 
 
@@ -15,8 +15,8 @@ app = Flask(__name__)
 
 def tokenize(text):
     text = text.lower()
-    #tokens = nltk.word_tokenize(text)
-    tokens=text.split(" ")
+    tokens = nltk.word_tokenize(text)
+    #tokens=text.split(" ")
     updated = []
     for item in tokens:
         updated.append(item)
