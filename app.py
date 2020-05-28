@@ -50,9 +50,9 @@ def greeting(text):
 def tabs_information():
     return "chrome driver not working on cloud we'll fix it."
 
-@app.route("/data1")
-def data1():
-    user_response ="User: Is a bussiness plan important?"
+@app.route("/data1/<data>")
+def data1(data):
+    user_response ="User: "+ data
     user_response=user_response.lower()
     name=response(user_response)
     return name
