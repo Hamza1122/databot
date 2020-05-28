@@ -3,7 +3,6 @@ from flask import Flask, request, jsonify, render_template
 import pickle
 import string
 import pandas as pd
-from pattern.en import lemma, lexeme
 from sklearn.neighbors import KNeighborsClassifier
 classifier = KNeighborsClassifier(n_neighbors=1, algorithm = 'brute')
 
@@ -23,7 +22,7 @@ def tokenize(text):
 def result(name):
     
     filename = 'knn_bot.pkl'
-    classifier = pickle.load(open(filename, 'rb'))
+    classifier = pickle.load(open(filename,'rb'))
     filename1 = 'tfidf.pkl'
     tfidf_vect = pickle.load(open(filename1,'rb'))
     df = pd.read_csv('Updated_Dataset.csv')
