@@ -3,6 +3,9 @@ import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
+
+from flask import Flask
+app = Flask(__name__)
 #PreProcessing
 def tokenize(text):
     text = text.lower()
@@ -34,8 +37,6 @@ def greeting(text):
     return 0
 
 
-from flask import Flask
-app = Flask(__name__)
 @app.route("/")
 def tabs_information():
     return "chrome driver not working on cloud we'll fix it."
@@ -54,7 +55,7 @@ def data1():
       if(user_response=='thanks' or user_response=='thank you' ):
         #print("ROBO: You are welcome..")
       else:
-        resp = greeting(user_response)
+        #resp = greeting(user_response)
         if(resp!=0):
           #print("ROBO: "+greeting(user_response))
         else:
