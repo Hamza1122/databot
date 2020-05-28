@@ -37,7 +37,7 @@ def result():
     tfidf_test = tfidf_vect.fit_transform(test.values.astype(str))
     y_pred = model_pickle.predict(tfidf_test[1])
     #return df['Answer'][y_pred[0]]
-     return "Hello Worl2"
+    return "Hello Worl2"
 
 
 @app.route('/')
