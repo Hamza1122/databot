@@ -30,12 +30,12 @@ def result(name):
     df = df.drop(['Unnamed: 0'], axis=1)
     user_response = "What is a leveraged buyout?"
 
-    test = ["Hello",user_response]
-    tfidf_test = tfidf_vect.transform(test)
-    y_pred = classifier.predict(tfidf_test[1])
-    return df['Answer'][y_pred[0]]
+    #test = ["Hello",user_response]
+    #tfidf_test = tfidf_vect.transform(test)
+    #y_pred = classifier.predict(tfidf_test[1])
+    #return df['Answer'][y_pred[0]]
 
-    #return "your name is" +name
+    return "your name is" +name
 
 
 
