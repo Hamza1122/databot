@@ -1,6 +1,5 @@
 
 from flask import Flask
-import nltk
 app = Flask(__name__)
 @app.route("/")
 def tabs_information():
@@ -54,8 +53,113 @@ def tentative_studyplan():
     return "Tentatie Study Plan"
 
 
+@app.route('/test')
+def test_quizzes():
+    name1="Hello"
+    return name1
+    
+    
+
+@app.route('/Roster')
+def roster():
+    return "Roster"
 
 
+@app.route('/messages')
+def messages():
+    return "message"
+
+
+
+@app.route('/test_quize')
+def test():
+    return '''<p>
+    What is the Tests & Quizzes tool?<br>
+    How do I create an assessment in Tests and Quizzes?<br>
+    How do I create a new assessment using markup text or cut and paste?<br>
+    How do I create a new question (with the assessment builder)?<br>
+    How do I create a multiple choice question?<br>
+    How do I create a matching question?<br>
+    How do I create a true/false question?<br>
+    How do I create a short answer/essay question?<br>
+    How do I create a fill in the blank question?<br>
+    How do I create a numeric response question?<br>
+    How do I create a calculated question?<br>
+    How do I create a hot spot question?<br>
+    How do I create a survey?<br>
+    How do I create a student audio response question?<br>
+    How do I create a file upload question?<br>
+    How to I add multiple parts to an assessment?<br>
+    </p>'''
+
+
+@app.route('/Dropbox')
+def dropbox():
+    return '''<p>
+    What is the Drop Box tool?<br>
+    How do I upload files to multiple dropbox folders?<br>
+    How do students add items to the Drop Box?<br>
+    How do I download multiple files from Dropbox?<br>
+    
+    </p>'''
+
+        
+
+@app.route('/syllabus')
+def syallabus():
+    return '''<p>
+    What is the Syllabus tool?<br>
+    How do I add my syllabus as a file attachment?<br>
+    How do I create a syllabus using cut and paste from a document?<br>
+    How do I edit syllabus items?<br>
+    How do I create a multi-part syllabus based on number of items needed?<br>
+    How do I create a multi-part syllabus by dates?<br>
+    How do I print the syllabus?<br>
+    How do I point my syllabus to a webpage?<br>
+    How do I rearrange syllabus items?<br>
+    How do I pubish/unpublish a syllabus item?<br>
+    How do I add a syllabus item to the calendar?<br>
+    How do I change syllabus item access?<br>
+    How do I delete a syllabus item?<br>
+    </p>'''
+
+
+
+
+@app.route('/assignment')
+def assignment():
+    return '''<p>
+    What is the Assignments tool?<br>
+    How do I add an assignment?<br>
+    How do I edit an existing assignment?<br>
+    How do I enable student peer review for an assignment?<br>
+    How do I enable group submissions for an assignment?<br>
+    How do I delete an assignment?<br>
+    How do students submit an assignment?<br>
+    How do I submit an assignment on behalf of a student?<br>
+    How do I grade an assignment?<br>
+    How do students complete a peer assessment assignment?<br>
+    How do I grade a peer review assignment<br>
+    How do I download assignments for grading offline?<br>
+    How do I upload graded assignment submissions and feedback?<br>
+    How do I release assignment grades?<br>
+    How do students view their assignment feedback?<br>
+    How do I change the Assignments tool permissions?<br>
+    </p>'''
+
+@app.route('/announcement')
+def announcement():
+    return '''<p>
+    What is the Assignments tool?<br>
+    What is the Announcements tool?<br>
+    How do I add an announcement?<br>
+    How do I edit an announcement?<br>
+    How do I delete an announcement?<br>
+    How do I merge announcements?<br>
+    How do I reorder announcements?<br>
+    How do I change Announcements tool permissions?<br>
+    How do I view announcements?<br>
+    </p>'''
 
 
 if __name__ == "__main__":
