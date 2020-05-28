@@ -8,6 +8,12 @@ classifier = KNeighborsClassifier(n_neighbors=1, algorithm = 'brute')
 
 app = Flask(__name__)
 #PreProcessing
+
+
+
+
+@app.route('/predict/<name>')
+
 def tokenize(text):
     text = text.lower()
     #tokens = nltk.word_tokenize(text)
@@ -17,9 +23,6 @@ def tokenize(text):
         updated.append(item)
     return updated
 
-
-
-@app.route('/predict/<name>')
 def result(name):
 
     filename = 'knn_bot.pkl'
